@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     vue(),
     // Theme colors live here: change primary/neutral to restyle the whole site.
-    ui({ ui: { colors: { primary: 'orange', neutral: 'stone' } } }),
+    ui({ ui: { colors: { primary: 'green', neutral: 'zinc' } } }),
   ],
   test: {
     environment: 'node',

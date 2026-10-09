@@ -35,7 +35,7 @@ const meta = computed(() => recipe.value?.meta)
   </p>
   <article v-else>
     <UButton to="/" variant="link" color="neutral" icon="i-lucide-arrow-left" class="-ml-2">All recipes</UButton>
-    <h1 class="mt-2 font-serif text-3xl font-bold">{{ meta!.title }}</h1>
+    <h1 class="mt-2 text-4xl font-bold tracking-tight text-highlighted">{{ meta!.title }}</h1>
 
     <dl class="my-4 flex flex-wrap gap-6">
       <div v-if="meta!.prep_time !== undefined">
@@ -72,7 +72,7 @@ const meta = computed(() => recipe.value?.meta)
     </TabPanel>
 
     <section v-for="s in otherSections" :key="s.id" class="mt-6">
-      <h2 class="mb-2 font-serif text-xl font-semibold">{{ s.title }}</h2>
+      <h2 class="mb-2 text-xl font-semibold tracking-tight text-highlighted">{{ s.title }}</h2>
       <ChecklistSection :slug="recipe.slug" :section="s" />
     </section>
   </article>

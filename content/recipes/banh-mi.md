@@ -13,7 +13,7 @@ source: https://www.seriouseats.com/serious-eats-bacon-banh-mi
 ---
 
 ## Ingredients
-- [ ] [[Vietnamese Chicken Thighs | Vietnamese Chicken Thighs]]
+- [ ] [Vietnamese Chicken Thighs](#/recipe/vietnamese-chicken-thighs)
 - [ ] 1 large carrot, cut into 2-inch matchsticks 1/8-inch-thick (about 2 cups)
 - [ ] 1 small daikon radish, cut into 2-inch matchsticks 1/8-inch-thick (about 2 cups)
 - [ ] 3/4 cup plus 2 teaspoons sugar

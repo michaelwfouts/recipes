@@ -33,7 +33,7 @@ const offsets = computed(() => {
     </div>
 
     <div v-for="(g, gi) in section.groups" :key="gi" class="mb-4">
-      <h3 v-if="g.heading" class="mb-1 font-serif text-lg font-semibold">{{ g.heading }}</h3>
+      <h3 v-if="g.heading" class="mb-1 text-lg font-semibold tracking-tight text-highlighted">{{ g.heading }}</h3>
       <ul class="divide-y divide-default">
         <li v-for="(item, ii) in g.items" :key="ii" class="py-3">
           <UCheckbox
