@@ -29,15 +29,32 @@ const fuse = new Fuse(indexed, FUSE_OPTIONS)
 
 export const allTags: string[] = [...new Set(recipes.flatMap((r) => r.meta.tags ?? []))].sort()
 
+/** Splits `tag:name` (or `tag:"two words"`) tokens out of the query; the rest is fuzzy text. */
+export function parseQuery(input: string): { text: string; tags: string[] } {
+  const tags: string[] = []
+  const text = input
+    .replace(/\btag:(?:"([^"]*)"|(\S+))/gi, (_m, quoted: string | undefined, bare: string | undefined) => {
+      const tag = (quoted ?? bare ?? '').trim().toLowerCase()
+      if (tag) tags.push(tag)
+      return ' '
+    })
+    .trim()
+  return { text, tags }
+}
+
 export function useSearch() {
   const query = ref('')
   const selectedTags = ref<string[]>([])
 
   const results = computed<Recipe[]>(() => {
-    const q = query.value.trim()
-    let list: Recipe[] = q ? fuse.search(q).map((r) => r.item) : recipes
-    if (selectedTags.value.length) {
-      list = list.filter((r) => selectedTags.value.every((t) => r.meta.tags?.includes(t)))
+    const { text, tags: typedTags } = parseQuery(query.value)
+    let list: Recipe[] = text ? fuse.search(text).map((r) => r.item) : recipes
+    const required = [...selectedTags.value.map((t) => t.toLowerCase()), ...typedTags]
+    if (required.length) {
+      list = list.filter((r) => {
+        const tags = (r.meta.tags ?? []).map((t) => t.toLowerCase())
+        return required.every((t) => tags.includes(t))
+      })
     }
     return list
   })

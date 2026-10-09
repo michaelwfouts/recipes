@@ -25,6 +25,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Links inside recipe text (e.g. a link to another recipe). */
+.recipe-text a {
+  color: var(--ui-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+.recipe-text a:hover {
+  text-decoration-thickness: 2px;
+}
+
 /* Subtle dotted grid used behind the hero, like the Nuxt UI site. */
 .bg-grid {
   background-image: radial-gradient(var(--ui-border-accented) 1px, transparent 1px);

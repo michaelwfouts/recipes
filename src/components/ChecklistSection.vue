@@ -44,12 +44,13 @@ const offsets = computed(() => {
           >
             <template #label>
               <span
+                class="recipe-text"
                 :class="isChecked(offsets[gi] + ii) ? 'text-muted line-through' : ''"
                 v-html="renderInline(item.text)"
               />
             </template>
           </UCheckbox>
-          <span v-else v-html="renderInline(item.text)" />
+          <span v-else class="recipe-text" v-html="renderInline(item.text)" />
         </li>
       </ul>
     </div>
