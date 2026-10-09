@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+}

@@ -8,23 +8,11 @@ const { query, selectedTags, results, toggleTag } = useSearch()
 </script>
 
 <template>
-  <h1>Recipes</h1>
+  <h1 class="mb-4 font-serif text-3xl font-bold">Recipes</h1>
   <SearchBar v-model="query" />
   <TagFilter :tags="allTags" :selected="selectedTags" @toggle="toggleTag" />
-  <p v-if="!results.length" class="empty">No recipes match.</p>
-  <div class="grid">
+  <p v-if="!results.length" class="mt-6 text-muted">No recipes match.</p>
+  <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <RecipeCard v-for="r in results" :key="r.slug" :recipe="r" />
   </div>
 </template>
-
-<style scoped>
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: var(--space-3);
-  margin-top: var(--space-3);
-}
-.empty {
-  color: var(--color-muted);
-}
-</style>

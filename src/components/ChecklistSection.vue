@@ -26,72 +26,32 @@ const offsets = computed(() => {
 
 <template>
   <div>
-    <div v-if="section.checkable" class="toolbar">
-      <span class="progress">{{ count }} / {{ total }} done</span>
-      <button type="button" class="reset" :disabled="count === 0" @click="reset">Reset</button>
+    <div v-if="section.checkable" class="mb-3 flex items-center gap-4">
+      <UProgress :model-value="count" :max="total" size="sm" class="flex-1" />
+      <span class="text-sm text-muted">{{ count }} / {{ total }}</span>
+      <UButton size="xs" color="neutral" variant="outline" :disabled="count === 0" @click="reset">Reset</UButton>
     </div>
 
-    <div v-for="(g, gi) in section.groups" :key="gi" class="group">
-      <h3 v-if="g.heading">{{ g.heading }}</h3>
-      <ul>
-        <li v-for="(item, ii) in g.items" :key="ii">
-          <label v-if="item.checkable" class="row" :class="{ done: isChecked(offsets[gi] + ii) }">
-            <input type="checkbox" :checked="isChecked(offsets[gi] + ii)" @change="toggle(offsets[gi] + ii)" />
-            <span v-html="renderInline(item.text)" />
-          </label>
-          <span v-else class="plain" v-html="renderInline(item.text)" />
+    <div v-for="(g, gi) in section.groups" :key="gi" class="mb-4">
+      <h3 v-if="g.heading" class="mb-1 font-serif text-lg font-semibold">{{ g.heading }}</h3>
+      <ul class="divide-y divide-default">
+        <li v-for="(item, ii) in g.items" :key="ii" class="py-3">
+          <UCheckbox
+            v-if="item.checkable"
+            size="lg"
+            :model-value="isChecked(offsets[gi] + ii)"
+            @update:model-value="toggle(offsets[gi] + ii)"
+          >
+            <template #label>
+              <span
+                :class="isChecked(offsets[gi] + ii) ? 'text-muted line-through' : ''"
+                v-html="renderInline(item.text)"
+              />
+            </template>
+          </UCheckbox>
+          <span v-else v-html="renderInline(item.text)" />
         </li>
       </ul>
     </div>
   </div>
 </template>
-
-<style scoped>
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--color-muted);
-  font-size: 0.9rem;
-}
-.reset {
-  background: none;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 2px 10px;
-}
-.reset:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-li {
-  border-bottom: 1px solid var(--color-border);
-}
-.row {
-  display: flex;
-  gap: var(--space-3);
-  align-items: flex-start;
-  padding: var(--space-3) var(--space-1);
-  cursor: pointer;
-}
-.row input {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-top: 0.15rem;
-  flex-shrink: 0;
-  accent-color: var(--color-accent);
-}
-.row.done span {
-  text-decoration: line-through;
-  color: var(--color-done);
-}
-.plain {
-  display: block;
-  padding: var(--space-2) var(--space-1);
-}
-</style>

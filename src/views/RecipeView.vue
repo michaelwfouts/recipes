@@ -29,80 +29,51 @@ const meta = computed(() => recipe.value?.meta)
 </script>
 
 <template>
-  <p v-if="!recipe"><router-link to="/">&larr; All recipes</router-link> &middot; Recipe not found.</p>
-  <article v-else class="recipe">
-    <router-link to="/" class="back">&larr; All recipes</router-link>
-    <h1>{{ meta!.title }}</h1>
+  <p v-if="!recipe">
+    <UButton to="/" variant="link" icon="i-lucide-arrow-left">All recipes</UButton>
+    Recipe not found.
+  </p>
+  <article v-else>
+    <UButton to="/" variant="link" color="neutral" icon="i-lucide-arrow-left" class="-ml-2">All recipes</UButton>
+    <h1 class="mt-2 font-serif text-3xl font-bold">{{ meta!.title }}</h1>
 
-    <dl class="facts">
-      <div v-if="meta!.prep_time !== undefined"><dt>Prep</dt><dd>{{ meta!.prep_time }} min</dd></div>
-      <div v-if="meta!.cook_time !== undefined"><dt>Cook</dt><dd>{{ meta!.cook_time }} min</dd></div>
-      <div v-if="meta!.servings !== undefined"><dt>Servings</dt><dd>{{ meta!.servings }}</dd></div>
-      <div v-if="meta!.difficulty"><dt>Difficulty</dt><dd>{{ meta!.difficulty }}</dd></div>
+    <dl class="my-4 flex flex-wrap gap-6">
+      <div v-if="meta!.prep_time !== undefined">
+        <dt class="text-xs uppercase tracking-wide text-muted">Prep</dt>
+        <dd class="font-semibold">{{ meta!.prep_time }} min</dd>
+      </div>
+      <div v-if="meta!.cook_time !== undefined">
+        <dt class="text-xs uppercase tracking-wide text-muted">Cook</dt>
+        <dd class="font-semibold">{{ meta!.cook_time }} min</dd>
+      </div>
+      <div v-if="meta!.servings !== undefined">
+        <dt class="text-xs uppercase tracking-wide text-muted">Servings</dt>
+        <dd class="font-semibold">{{ meta!.servings }}</dd>
+      </div>
+      <div v-if="meta!.difficulty">
+        <dt class="text-xs uppercase tracking-wide text-muted">Difficulty</dt>
+        <dd class="font-semibold">{{ meta!.difficulty }}</dd>
+      </div>
     </dl>
 
-    <p v-if="meta!.tags?.length" class="tags">
-      <span v-for="t in meta!.tags" :key="t" class="tag">{{ t }}</span>
-    </p>
-    <p v-if="meta!.source || meta!.credit" class="source">
+    <div v-if="meta!.tags?.length" class="flex flex-wrap gap-2">
+      <UBadge v-for="t in meta!.tags" :key="t" color="primary" variant="subtle">{{ t }}</UBadge>
+    </div>
+    <p v-if="meta!.source || meta!.credit" class="mt-3 text-muted">
       <template v-if="meta!.credit">By {{ meta!.credit }}</template>
       <template v-if="meta!.credit && meta!.source"> &middot; </template>
-      <a v-if="meta!.source" :href="meta!.source" target="_blank" rel="noopener noreferrer">Original recipe</a>
+      <a v-if="meta!.source" :href="meta!.source" target="_blank" rel="noopener noreferrer" class="text-primary underline">
+        Original recipe
+      </a>
     </p>
 
     <TabPanel v-if="tabs.length" :tabs="tabs" :model-value="activeTab" @update:model-value="setTab">
       <ChecklistSection v-if="activeSection" :key="activeSection.id" :slug="recipe.slug" :section="activeSection" />
     </TabPanel>
 
-    <section v-for="s in otherSections" :key="s.id" class="extra">
-      <h2>{{ s.title }}</h2>
+    <section v-for="s in otherSections" :key="s.id" class="mt-6">
+      <h2 class="mb-2 font-serif text-xl font-semibold">{{ s.title }}</h2>
       <ChecklistSection :slug="recipe.slug" :section="s" />
     </section>
   </article>
 </template>
-
-<style scoped>
-.back {
-  display: inline-block;
-  margin-bottom: var(--space-3);
-  text-decoration: none;
-}
-.facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  margin: var(--space-3) 0;
-}
-.facts div {
-  display: flex;
-  flex-direction: column;
-}
-.facts dt {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-muted);
-}
-.facts dd {
-  margin: 0;
-  font-weight: 600;
-}
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-.tag {
-  background: var(--color-accent-soft);
-  color: var(--color-accent);
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-}
-.source {
-  color: var(--color-muted);
-}
-.extra {
-  margin-top: var(--space-4);
-}
-</style>

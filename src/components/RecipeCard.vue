@@ -5,45 +5,17 @@ defineProps<{ recipe: Recipe }>()
 </script>
 
 <template>
-  <router-link :to="{ name: 'recipe', params: { slug: recipe.slug } }" class="card">
-    <h2>{{ recipe.meta.title }}</h2>
-    <p class="times">
-      <span v-if="recipe.meta.prep_time !== undefined">Prep {{ recipe.meta.prep_time }}m</span>
-      <span v-if="recipe.meta.cook_time !== undefined">Cook {{ recipe.meta.cook_time }}m</span>
-      <span v-if="recipe.meta.difficulty">{{ recipe.meta.difficulty }}</span>
-    </p>
-    <p v-if="recipe.meta.tags?.length" class="tags">{{ recipe.meta.tags.join(' · ') }}</p>
-  </router-link>
+  <RouterLink :to="{ name: 'recipe', params: { slug: recipe.slug } }" class="block">
+    <UCard class="h-full transition hover:ring-primary">
+      <h2 class="font-serif text-lg font-semibold">{{ recipe.meta.title }}</h2>
+      <p class="mt-1 flex gap-3 text-sm text-muted">
+        <span v-if="recipe.meta.prep_time !== undefined">Prep {{ recipe.meta.prep_time }}m</span>
+        <span v-if="recipe.meta.cook_time !== undefined">Cook {{ recipe.meta.cook_time }}m</span>
+        <span v-if="recipe.meta.difficulty">{{ recipe.meta.difficulty }}</span>
+      </p>
+      <div v-if="recipe.meta.tags?.length" class="mt-3 flex flex-wrap gap-1">
+        <UBadge v-for="t in recipe.meta.tags" :key="t" color="primary" variant="subtle" size="sm">{{ t }}</UBadge>
+      </div>
+    </UCard>
+  </RouterLink>
 </template>
-
-<style scoped>
-.card {
-  display: block;
-  padding: var(--space-3);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  color: inherit;
-  text-decoration: none;
-}
-.card:hover,
-.card:focus-visible {
-  border-color: var(--color-accent);
-}
-h2 {
-  margin: 0 0 var(--space-2);
-  font-size: 1.15rem;
-}
-.times {
-  display: flex;
-  gap: var(--space-3);
-  margin: 0;
-  color: var(--color-muted);
-  font-size: 0.9rem;
-}
-.tags {
-  margin: var(--space-2) 0 0;
-  color: var(--color-accent);
-  font-size: 0.85rem;
-}
-</style>

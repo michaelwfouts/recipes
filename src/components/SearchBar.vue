@@ -4,23 +4,13 @@ defineEmits<{ 'update:modelValue': [value: string] }>()
 </script>
 
 <template>
-  <input
-    class="search"
-    type="search"
+  <UInput
+    :model-value="modelValue"
+    icon="i-lucide-search"
+    size="xl"
+    class="w-full"
     placeholder="Search recipes, ingredients, tags..."
     aria-label="Search recipes"
-    :value="modelValue"
-    @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+    @update:model-value="$emit('update:modelValue', String($event ?? ''))"
   />
 </template>
-
-<style scoped>
-.search {
-  width: 100%;
-  padding: var(--space-2) var(--space-3);
-  font: inherit;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  background: var(--color-surface);
-}
-</style>
