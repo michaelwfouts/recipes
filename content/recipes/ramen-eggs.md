@@ -5,7 +5,6 @@ cook_time: 7
 servings: 4
 difficulty: Easy
 tags:
-  - appetizer
   - eggs
   - japanese
 ---

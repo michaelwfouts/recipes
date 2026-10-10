@@ -46,7 +46,7 @@ credit: Original Author Name
 - `servings` — required, integer. Estimate from the recipe (e.g., number of sandwiches/portions) if
   not stated.
 - `difficulty` — required, one of `Easy`, `Medium`, `Hard`.
-- `tags` — optional YAML list, lowercase, e.g. `dinner`, `vietnamese`, `chicken`. Convert any trailing
+- `tags` — optional YAML list, lowercase, e.g. `vietnamese`, `chicken`. Convert any trailing
   `## Tags` / `#hashtag` section into this list instead.
 - `source` — optional, a bare URL to the original recipe (not a markdown link). Pull this out of any
   `## Info` / `- **Source:**` section.

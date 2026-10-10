@@ -5,15 +5,13 @@ cook_time: 20
 servings: 4
 difficulty: Medium
 tags:
-  - dinner
   - thai
-  - curry
   - chicken
 source: https://www.averiecooks.com/thai-chicken-coconut-curry/
 ---
 
 ## Ingredients
-- [ ] 2 to 3 tablespoons coconut oil (olive oil may be substituted)
+- [ ] 2 to 3 tablespoons oil
 - [ ] 1 medium/large sweet Vidalia or yellow onion, diced small
 - [ ] 1 pound boneless skinless chicken thighs (about 4), diced into bite-sized pieces
 - [ ] 3 cloves garlic, pressed
@@ -28,7 +26,7 @@ source: https://www.averiecooks.com/thai-chicken-coconut-curry/
 - [ ] 1 tablespoon lime juice
 ### Serve With
 - [ ] 1/4 cup fresh cilantro, finely chopped for garnishing (basil may be substituted)
-- [ ] rice, quinoa, or naan, optional for serving
+- [ ] rice, quinoa, or naan
 
 ## Instructions
 - [ ] To a large skillet, add the oil, onion, and sauté over medium-high heat until the onion begins to soften about 5 minutes; stir intermittently.

@@ -7,8 +7,6 @@ difficulty: Easy
 tags:
   - sauce
   - korean
-  - gochujang
-  - condiment
 source: https://cooking.nytimes.com/recipes/1018552-pressure-cooker-spicy-pork-shoulder
 credit: Melissa Clark
 ---

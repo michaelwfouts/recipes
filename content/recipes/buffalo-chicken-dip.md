@@ -5,10 +5,7 @@ cook_time: 0
 servings: 8
 difficulty: Easy
 tags:
-  - appetizer
-  - dip
   - chicken
-source: https://theforkedspoon.com/buffalo-chicken-dip-recipe/
 ---
 
 ## Ingredients

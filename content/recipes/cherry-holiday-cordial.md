@@ -5,11 +5,8 @@ cook_time: 15
 servings: 8
 difficulty: Medium
 tags:
-  - cocktail
   - drinks
-  - gin
   - winter
-  - holiday
 source: https://www.seriouseats.com/minnesota-goodbye-cranberry-french-75-variation-winter-cocktail-recipe
 credit: Maggie Hoffman, recipe by Nathaniel Smith of Spoon and Stable
 ---
@@ -29,7 +26,7 @@ credit: Maggie Hoffman, recipe by Nathaniel Smith of Spoon and Stable
 - [ ] (Optional) Peel of 1 orange (vegetable peeler, zest only)
 
 ## Instructions
-- [ ] For the spiced cranberry cordial: add cinnamon sticks, star anise, cardamom, and cloves to a saucepan and toast over medium heat, shaking the pan frequently, until fragrant; do not let them burn.
+- [ ] For the spiced cherry cordial: add cinnamon sticks, star anise, cardamom, and cloves to a saucepan and toast over medium heat, shaking the pan frequently, until fragrant; do not let them burn.
 - [ ] Add water, sugar, orange peel, cherries, lime juice, and salt and stir over medium-high heat until the sugar dissolves.
 - [ ] Bring to a simmer and cook, using a wooden spoon to smash the fruit against the side of the pan.
 - [ ] Remove from heat and let cool completely, lid on, 1 to 2 hours.

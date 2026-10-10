@@ -8,7 +8,6 @@ tags:
   - soup
   - dinner
 source: https://www.youtube.com/watch?v=aPqG4RkvyMw
-credit: Josh Weissman
 ---
 
 ## Ingredients

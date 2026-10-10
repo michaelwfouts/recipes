@@ -7,7 +7,6 @@ difficulty: Easy
 tags:
   - breakfast
   - eggs
-source: https://dashofsavory.com/sous-vide-eggs/
 ---
 
 ## Ingredients
