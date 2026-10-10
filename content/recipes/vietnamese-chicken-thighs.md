@@ -5,7 +5,6 @@ cook_time: 10
 servings: 4
 difficulty: Easy
 tags:
-  - dinner
   - vietnamese
   - chicken
 ---

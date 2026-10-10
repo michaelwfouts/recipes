@@ -5,10 +5,7 @@ cook_time: 0
 servings: 2
 difficulty: Easy
 tags:
-  - tea
-  - green-tea
-  - cold-brew
-  - refreshing
+  - drinks
 ---
 
 ## Ingredients

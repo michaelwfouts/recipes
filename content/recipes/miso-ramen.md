@@ -6,6 +6,8 @@ servings: 4
 difficulty: Medium
 tags:
   - pork
+  - japanese
+  - soup
 source: https://www.joshuaweissman.com/post/3-dollar-ramen-but-cheaper
 ---
 

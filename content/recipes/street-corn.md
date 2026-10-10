@@ -5,10 +5,8 @@ cook_time: 10
 servings: 4
 difficulty: Easy
 tags:
-  - corn
   - mexican
   - side
-  - summer
 source: https://www.seriouseats.com/street-corn
 credit: Serious Eats
 ---

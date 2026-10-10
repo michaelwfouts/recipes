@@ -5,7 +5,6 @@ cook_time: 45
 servings: 1
 difficulty: Easy
 tags:
-  - breakfast
   - eggs
 ---
 

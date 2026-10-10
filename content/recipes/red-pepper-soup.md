@@ -6,7 +6,6 @@ servings: 6
 difficulty: Medium
 tags:
   - soup
-  - dinner
 source: https://www.youtube.com/watch?v=aPqG4RkvyMw
 ---
 

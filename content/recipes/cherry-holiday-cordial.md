@@ -6,7 +6,6 @@ servings: 8
 difficulty: Medium
 tags:
   - drinks
-  - winter
 source: https://www.seriouseats.com/minnesota-goodbye-cranberry-french-75-variation-winter-cocktail-recipe
 credit: Maggie Hoffman, recipe by Nathaniel Smith of Spoon and Stable
 ---

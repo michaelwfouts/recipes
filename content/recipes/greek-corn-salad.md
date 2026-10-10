@@ -5,10 +5,7 @@ cook_time: 10
 servings: 4
 difficulty: Easy
 tags:
-  - salad
-  - corn
-  - greek
-  - summer
+  - side
 source: https://www.foodnetwork.com/recipes/food-network-kitchen/grilled-steak-with-greek-corn-salad-3562019
 ---
 

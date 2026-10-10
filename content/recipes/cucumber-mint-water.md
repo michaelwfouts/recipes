@@ -5,10 +5,7 @@ cook_time: 0
 servings: 2
 difficulty: Easy
 tags:
-  - cucumber
-  - mint
-  - infused-water
-  - refreshing
+  - drinks
 ---
 
 ## Ingredients

@@ -5,10 +5,7 @@ cook_time: 10
 servings: 24
 difficulty: Easy
 tags:
-  - cookies
   - dessert
-  - baking
-  - classic
 source: https://www.allrecipes.com/recipe/25766/grandmas-old-fashioned-tea-cakes/
 credit: Allrecipes
 ---

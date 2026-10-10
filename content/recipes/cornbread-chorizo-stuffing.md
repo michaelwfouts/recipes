@@ -6,7 +6,6 @@ servings: 8
 difficulty: Medium
 tags:
   - side
-  - holiday
 source: https://damndelicious.net/2013/11/16/chorizo-cornbread-stuffing/
 ---
 
