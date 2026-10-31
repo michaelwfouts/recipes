@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import TimerButton from './components/TimerButton.vue'
+import CalculatorButton from './components/CalculatorButton.vue'
 </script>
 
 <template>
@@ -10,7 +12,11 @@ import { RouterView } from 'vue-router'
           <UIcon name="i-lucide-chef-hat" class="size-6 text-primary" />
           Recipes
         </RouterLink>
-        <UColorModeButton />
+        <div class="flex items-center gap-1">
+          <TimerButton />
+          <CalculatorButton />
+          <UColorModeButton />
+        </div>
       </UContainer>
     </header>
     <UContainer class="py-10">

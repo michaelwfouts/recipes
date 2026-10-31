@@ -4,7 +4,7 @@ Personal recipe website built with Vue 3, Vite and TypeScript, hosted on GitHub 
 
 ## Adding a recipe
 
-Add a markdown file to `content/recipes/` (see the `recipe-format` skill in `.github/skills/`) and push to `main`. Sections made of `- [ ]` items become checkable tabs (Ingredients, Instructions); other sections such as Notes show below the tabs. Checked items are saved per browser in `localStorage`.
+Add a markdown file anywhere under `content/` — subfolders are fine and are only for organization (see the `recipe-format` skill in `.github/skills/`) and push to `main`. Sections made of `- [ ]` items become checkable tabs (Ingredients, Instructions); other sections such as Notes show below the tabs. Checked items are saved per browser in `localStorage`.
 
 ## Development
 
