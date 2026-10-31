@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { formatDuration, isFinished, remaining, useTimers } from '../composables/useTimers'
+import { formatDuration, isFinished, remaining, useTimers, type Timer } from '../composables/useTimers'
 import { unlockAudio } from '../composables/useTimerAlarm'
 
 const { timers, now, add, pause, resume, addMinute, restart, remove } = useTimers()
@@ -23,6 +23,21 @@ const notifyPermission = ref(notifySupported ? Notification.permission : 'denied
 
 async function enableNotifications() {
   notifyPermission.value = await Notification.requestPermission()
+}
+
+// iPadOS reports itself as a Mac, so also check for a touch screen.
+const isIOS =
+  /iPad|iPhone|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1)
+const SHORTCUT_NAME = 'Kitchen Timer'
+
+/** Runs the user's "Kitchen Timer" shortcut, which starts a Clock app timer, then comes back here. */
+function sendToClock(t: Timer) {
+  const seconds = Math.ceil(remaining(t, Date.now()) / 1000)
+  const params = { name: SHORTCUT_NAME, input: 'text', text: String(seconds), 'x-success': location.href }
+  const query = Object.entries(params)
+    .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
+    .join('&')
+  location.href = `shortcuts://x-callback-url/run-shortcut?${query}`
 }
 </script>
 
@@ -109,6 +124,16 @@ async function enableNotifications() {
           >
             Restart
           </UButton>
+          <UButton
+            v-if="isIOS && t.endsAt !== null && !isFinished(t, now)"
+            size="sm"
+            color="neutral"
+            variant="outline"
+            icon="i-lucide-smartphone"
+            @click="sendToClock(t)"
+          >
+            Clock app
+          </UButton>
         </div>
       </li>
     </ul>
@@ -123,5 +148,19 @@ async function enableNotifications() {
     >
       Also notify me when this tab is in the background
     </UButton>
+
+    <details v-if="isIOS" class="text-sm text-muted">
+      <summary class="cursor-pointer">Set up the Clock app button</summary>
+      <p class="mt-2">
+        "Clock app" copies a running timer to your device's Clock app, which rings even when the browser is closed. It
+        needs a shortcut, which you only set up once:
+      </p>
+      <ol class="mt-2 list-decimal space-y-1 pl-5">
+        <li>In the Shortcuts app, create a new shortcut named <strong>{{ SHORTCUT_NAME }}</strong>.</li>
+        <li>Add the <strong>Start Timer</strong> action.</li>
+        <li>Tap its number and choose <strong>Shortcut Input</strong>, then tap the unit and choose <strong>seconds</strong>.</li>
+      </ol>
+      <p class="mt-2">Pausing or dismissing a timer here doesn't change the Clock app timer.</p>
+    </details>
   </div>
 </template>
