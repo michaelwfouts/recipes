@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { formatDuration, isFinished, remaining, useTimers, type Timer } from '../composables/useTimers'
+import { formatDuration, isFinished, remaining, useTimers } from '../composables/useTimers'
 import { unlockAudio } from '../composables/useTimerAlarm'
 
 const { timers, now, add, pause, resume, addMinute, restart, remove } = useTimers()
@@ -28,11 +28,12 @@ async function enableNotifications() {
 // iPadOS reports itself as a Mac, so also check for a touch screen.
 const isIOS =
   /iPad|iPhone|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1)
-const SHORTCUT_NAME = 'Kitchen Timer'
+const SHORTCUT_NAME = 'Set Timer'
 
-/** Runs the user's "Kitchen Timer" shortcut, which starts a Clock app timer, then comes back here. */
-function sendToClock(t: Timer) {
-  const seconds = Math.ceil(remaining(t, Date.now()) / 1000)
+/** Runs the user's "Set Timer" shortcut, which starts a Clock app timer, then comes back here. */
+function sendToClock(ms: number) {
+  if (ms <= 0) return
+  const seconds = Math.ceil(ms / 1000)
   const params = { name: SHORTCUT_NAME, input: 'text', text: String(seconds), 'x-success': location.href }
   const query = Object.entries(params)
     .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
@@ -53,7 +54,21 @@ function sendToClock(t: Timer) {
           <UInputNumber v-model="seconds" :min="0" :max="59" :step="5" class="w-full" />
         </UFormField>
       </div>
-      <UButton type="submit" icon="i-lucide-play" block :disabled="!minutes && !seconds">Start timer</UButton>
+      <div class="flex gap-2">
+        <UButton type="submit" icon="i-lucide-play" block class="flex-1" :disabled="!minutes && !seconds">
+          Start timer
+        </UButton>
+        <UButton
+          v-if="isIOS"
+          color="neutral"
+          variant="outline"
+          icon="i-lucide-smartphone"
+          :disabled="!minutes && !seconds"
+          @click="sendToClock(((minutes || 0) * 60 + (seconds || 0)) * 1000)"
+        >
+          Clock app
+        </UButton>
+      </div>
       <div class="flex flex-wrap gap-2">
         <span class="w-full text-xs uppercase tracking-wide text-muted">Quick start</span>
         <UButton
@@ -124,16 +139,6 @@ function sendToClock(t: Timer) {
           >
             Restart
           </UButton>
-          <UButton
-            v-if="isIOS && t.endsAt !== null && !isFinished(t, now)"
-            size="sm"
-            color="neutral"
-            variant="outline"
-            icon="i-lucide-smartphone"
-            @click="sendToClock(t)"
-          >
-            Clock app
-          </UButton>
         </div>
       </li>
     </ul>
@@ -152,15 +157,14 @@ function sendToClock(t: Timer) {
     <details v-if="isIOS" class="text-sm text-muted">
       <summary class="cursor-pointer">Set up the Clock app button</summary>
       <p class="mt-2">
-        "Clock app" copies a running timer to your device's Clock app, which rings even when the browser is closed. It
-        needs a shortcut, which you only set up once:
+        "Clock app" starts the timer in your device's Clock app instead, which rings even when the browser is closed.
+        It needs a shortcut, which you only set up once:
       </p>
       <ol class="mt-2 list-decimal space-y-1 pl-5">
         <li>In the Shortcuts app, create a new shortcut named <strong>{{ SHORTCUT_NAME }}</strong>.</li>
         <li>Add the <strong>Start Timer</strong> action.</li>
         <li>Tap its number and choose <strong>Shortcut Input</strong>, then tap the unit and choose <strong>seconds</strong>.</li>
       </ol>
-      <p class="mt-2">Pausing or dismissing a timer here doesn't change the Clock app timer.</p>
     </details>
   </div>
 </template>
