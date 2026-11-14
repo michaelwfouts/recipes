@@ -9,9 +9,9 @@ tags:
 ---
 
 ## Ingredients
-- [ ] 2 4-oz bars dark baking chocolate
+- [ ] 2 3.5-oz bars dark baking chocolate (~73%)
 - [ ] 1 cup cocoa powder
-- [ ] 2 cups sugar
+- [ ] 3 cups sugar
 - [ ] 2 tbsp cornstarch
 - [ ] 1/2 tsp kosher salt
 

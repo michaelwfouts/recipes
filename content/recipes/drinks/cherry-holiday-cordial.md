@@ -27,8 +27,8 @@ credit: Maggie Hoffman, recipe by Nathaniel Smith of Spoon and Stable
 ## Instructions
 - [ ] For the spiced cherry cordial: add cinnamon sticks, star anise, cardamom, and cloves to a saucepan and toast over medium heat, shaking the pan frequently, until fragrant; do not let them burn.
 - [ ] Add water, sugar, orange peel, cherries, lime juice, and salt and stir over medium-high heat until the sugar dissolves.
-- [ ] Bring to a simmer and cook, using a wooden spoon to smash the fruit against the side of the pan.
-- [ ] Remove from heat and let cool completely, lid on, 1 to 2 hours.
+- [ ] Bring to a simmer and cook, using a wooden spoon to smash the fruit against the side of the pan.  Let simmer for 1 to 2 hours.
+- [ ] Remove from heat and let cool completely, lid on.
 - [ ] Strain through a fine-mesh strainer into a resealable container. (Cordial can be kept up to 3 weeks in the refrigerator.)
 
 ## Notes

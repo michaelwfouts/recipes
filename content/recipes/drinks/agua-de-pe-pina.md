@@ -23,5 +23,5 @@ tags:
 - [ ] Serve over ice and enjoy cold.
 
 ## Notes
-- [ ] The source notes suggested a ratio of 1 pineapple to 2 cucumbers.
-- [ ] This is a very fresh, lightly sweet drink best served chilled.
+- The source notes suggested a ratio of 1 pineapple to 2 cucumbers.
+- This is a very fresh, lightly sweet drink best served chilled.
