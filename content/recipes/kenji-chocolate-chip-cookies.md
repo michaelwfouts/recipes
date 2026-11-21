@@ -25,10 +25,10 @@ source: https://www.seriouseats.com/the-food-lab-best-chocolate-chip-cookie-reci
 ## Instructions
 - [ ] Melt the butter in a saucepan until it turns golden brown and nutty.
 - [ ] Whisk in the ice cube and refrigerate until cool and opaque.
-- [ ] Stir together the flour, baking soda, and salt.
-- [ ] Whisk the granulated sugar, eggs, and vanilla until pale and thick.
+- [ ] Stir together the flour, baking soda, and salt in a deli container.
+- [ ] Whisk the granulated sugar, eggs, and vanilla until pale and thick in a large bowl.
 - [ ] Add the brown sugar and cooled brown butter to the egg mixture and combine.
-- [ ] Mix in the flour mixture until just combined, then fold in the chocolate.
+- [ ] Mix in the flour mixture with your hands until just combined, then fold in the chocolate.
 - [ ] Chill the dough overnight or up to 3 days.
 - [ ] Portion the dough into balls and bake at 325°F until golden at the edges but still soft, 13 to 16 minutes.
 - [ ] Sprinkle lightly with coarse salt and cool completely before storing.
