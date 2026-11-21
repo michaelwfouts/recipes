@@ -30,5 +30,5 @@ source: https://www.seriouseats.com/the-food-lab-best-chocolate-chip-cookie-reci
 - [ ] Add the brown sugar and cooled brown butter to the egg mixture and combine.
 - [ ] Mix in the flour mixture with your hands until just combined, then fold in the chocolate.
 - [ ] Chill the dough overnight or up to 3 days.
-- [ ] Portion the dough into balls and bake at 325°F until golden at the edges but still soft, 13 to 16 minutes.
+- [ ] Portion the dough into balls, flatten into puck shapes, and bake at 325°F until golden at the edges but still soft, 10 to 15 minutes.
 - [ ] Sprinkle lightly with coarse salt and cool completely before storing.

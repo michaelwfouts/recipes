@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import TimerButton from './components/TimerButton.vue'
 import CalculatorButton from './components/CalculatorButton.vue'
 </script>
 
@@ -13,7 +12,6 @@ import CalculatorButton from './components/CalculatorButton.vue'
           Recipes
         </RouterLink>
         <div class="flex items-center gap-1">
-          <TimerButton />
           <CalculatorButton />
           <UColorModeButton />
         </div>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, toRef } from 'vue'
+import { computed, onBeforeUnmount, ref, toRef } from 'vue'
 import { useChecklist } from '../composables/useChecklist'
 import { renderInline } from '../content/renderInline'
+import { sectionToText } from '../content/sectionToText'
 import type { RecipeSection } from '../types/recipe'
 
 const props = defineProps<{ slug: string; section: RecipeSection }>()
@@ -22,6 +23,43 @@ const offsets = computed(() => {
     return start
   })
 })
+
+const copyable = computed(() => props.section.id === 'ingredients')
+const copyState = ref<'idle' | 'copied' | 'failed'>('idle')
+let copyTimer: ReturnType<typeof setTimeout> | undefined
+
+async function writeClipboard(text: string) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text)
+      return
+    } catch {
+      // Fall through to the legacy approach (e.g. non-secure context).
+    }
+  }
+  const ta = document.createElement('textarea')
+  ta.value = text
+  ta.setAttribute('readonly', '')
+  ta.style.position = 'fixed'
+  ta.style.opacity = '0'
+  document.body.appendChild(ta)
+  ta.select()
+  const ok = document.execCommand('copy')
+  ta.remove()
+  if (!ok) throw new Error('copy failed')
+}
+
+async function copy() {
+  try {
+    await writeClipboard(sectionToText(props.section))
+    copyState.value = 'copied'
+  } catch {
+    copyState.value = 'failed'
+  }
+  clearTimeout(copyTimer)
+  copyTimer = setTimeout(() => (copyState.value = 'idle'), 2000)
+}
+onBeforeUnmount(() => clearTimeout(copyTimer))
 </script>
 
 <template>
@@ -29,6 +67,16 @@ const offsets = computed(() => {
     <div v-if="section.checkable" class="mb-3 flex items-center gap-4">
       <UProgress :model-value="count" :max="total" size="sm" class="flex-1" />
       <span class="text-sm text-muted">{{ count }} / {{ total }}</span>
+      <UButton
+        v-if="copyable"
+        size="xs"
+        :color="copyState === 'failed' ? 'error' : 'neutral'"
+        variant="outline"
+        :icon="copyState === 'copied' ? 'i-lucide-check' : 'i-lucide-copy'"
+        @click="copy"
+      >
+        {{ copyState === 'copied' ? 'Copied' : copyState === 'failed' ? 'Copy failed' : 'Copy' }}
+      </UButton>
       <UButton size="xs" color="neutral" variant="outline" :disabled="count === 0" @click="reset">Reset</UButton>
     </div>
 
